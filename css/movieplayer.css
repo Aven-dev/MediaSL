@@ -1,0 +1,141 @@
+html, body {
+overflow: hidden;
+}
+
+div#container {
+width: 1024px;
+height: 576px;
+background: none;
+background-color: #000;
+}
+
+div#messageLoading {
+position: absolute;
+top: 0; left: 0;
+width: 1024px;
+height: 576px;
+z-index: 1;
+}
+
+div#messageLoading > div {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+height: 100%;
+}
+
+div#messageLoading > div > div {
+width: 300px;
+background: rgba( 255, 255, 255, 0.8 ) url("../images/loading.gif") no-repeat 16px 16px;
+border-radius: 9px;
+padding: 16px;
+}
+
+div#messageLoading > div > div > h1 {
+padding-left: 32px;
+}
+
+div#messageLoading > div > div > p {
+text-align: justify;
+text-justify: inter-word;
+}
+
+.jp-state-seeking div#messageLoading {
+display: block;
+}
+
+.jp-type-single {
+position: relative;
+}
+
+.jp-container {
+width: 100%;
+height: 94px;
+background: url('../images/bg-player.png') repeat-x 0 0;
+color: #fff;
+position: absolute;
+bottom: 0; left: 0;
+z-index: 1;
+}
+
+.jp-interface {
+padding: 50px 12px 9px;
+}
+
+.jp-progress {
+width: 100%;
+height: 6px;
+margin-bottom: 9px;
+}
+
+.jp-seek-bar {
+width: 1000px;
+height: 100%;
+cursor: pointer;
+padding-top: 2px;
+}
+
+.jp-seek-display {
+width: 100%;
+height: 6px;
+background: url('../images/bg-white30.png') repeat;
+}
+
+.jp-play-bar {
+background-color: #fff;
+height: 100%;
+}
+
+.jp-controls-holder {
+clear: both;
+overflow: hidden;
+}
+
+.p33 { width: 33%; float: left; }
+.p34 { width: 34%; float: left; }
+.last { float: right; }
+.centered { text-align: center; }
+
+.jp-volume-bar {
+width: 50px;
+height: 20px;
+float: right;
+cursor: pointer;
+background: url('../images/bg-player-volume-0.png') no-repeat;
+opacity: .8;
+}
+
+.jp-volume-bar:hover { opacity: 1; }
+
+.jp-volume-bar-value {
+width: 100%;
+height: 100%;
+background: url('../images/bg-player-volume-1.png') no-repeat;
+}
+
+.jp-ctrl {
+width: 20px;
+height: 20px;
+cursor: pointer;
+opacity: .8;
+}
+
+.jp-ctrl:hover { opacity: 1; }
+
+.jp-play { background: url('../images/btn-player-play.png') no-repeat; }
+.jp-pause { background: url('../images/btn-player-pause.png') no-repeat; }
+
+#movietitle {
+opacity: 0.8;
+position: absolute;
+top: 0; left: 0;
+z-index: 1;
+width: 100%;
+text-align: center;
+font-size: 18px;
+color: #fff;
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: black;
+line-height: 48px;
+}
