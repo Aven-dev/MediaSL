@@ -2524,6 +2524,7 @@ section#MSLAppRadioListen div.sliderContainer > div.slider {
 
 section#MSLAppRadioListen .slider > div.ui-slider-range {
 	height: 2px;
+	position: relative;
 	top: 15px; left: -1px;
 	background-image: none;
 	background-color: #e78f08;
