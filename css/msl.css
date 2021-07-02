@@ -113,6 +113,7 @@ body > div#underlay > div#videoBackground {
 	height: 576px;
 	mix-blend-mode: overlay;
 	background-color: #00e4ff;
+	background-size: cover;
 	transition: all 0.5s linear;
 	z-index: -9;
 }
@@ -3507,7 +3508,6 @@ div.formgroup.horizontal > .right {
 
 #SettingsMenu > ul > li:hover {
 	background-color: rgba( 255, 255, 255, 0.35 );
-	font-weight: 400;
 }
 
 #SettingsMenu > ul > li p {
@@ -3545,19 +3545,19 @@ div#SettingsMenuToolTip {
 	bottom: 0;
 	left: -16px;
 	width: calc(100% + 32px);
-	height: 142px;
+	height: 116px;
 	background: url("../images/bg-settings-tooltip.png") repeat-x;
 	opacity: 0.4;
 	font-size: 18px;
 	font-weight: 500;
 	color: #fff;
 	justify-content: center;
+	pointer-events: none;
 }
 
 div#SettingsMenuToolTip > p {
 	align-self: flex-end;
 	margin-bottom: 24px;
-	text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111, 1px 1px 0 #111;
 }
 
 div#SettingsMenuToolTip > p > span.orange{
@@ -3771,7 +3771,7 @@ li.setting .SettingsInput > .save.changes {
 }
 
 li.setting input {
-	width: calc(100% + 24px);
+	width: calc(100% + 24px - 30px);
 	height: 30px;
 	margin: 4px 0;
 	font-family: Roboto, Arial, Helvetics, Sans-serif;
@@ -3779,7 +3779,7 @@ li.setting input {
 	background-color: rgba( 255, 255, 255, 0.88 );
 	position: relative;
 	top: -1px;
-	padding: 0 0 0 6px;
+	padding: 0 30px 0 6px;
 	border: 0px;
 	border-radius: 3px;
 	z-index: 1;
