@@ -2449,7 +2449,7 @@ section#MSLAppRadioListen div#info > div#artContainer {
 section#MSLAppRadioListen div#info > div#artContainer > div {
 	width: 180px;
 	height: 180px;
-	background: url('../images/bg-albumart.png') no-repeat;
+	background: url('../images/apps/altai/radio_missing.png') no-repeat;
 	background-position: center center;
 	background-size: 100% 100%;
 	border: 1px solid #fff;
@@ -3496,6 +3496,7 @@ div.formgroup.horizontal > .right {
 #SettingsMenu > ul {
 	list-style-type: none;
 	margin-bottom: 1em;
+	user-select: none;
 }
 
 #SettingsMenu > ul > li {
