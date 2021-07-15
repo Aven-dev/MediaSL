@@ -12,6 +12,15 @@
 	100% { box-shadow: 0 0 5px 1px #65ebfc; }
 }
 
+@keyframes attentionWiggle {
+	0% { transform: rotate(-3deg); }
+	2.5% { transform: rotate(20deg); }
+	5% { transform: rotate(-15deg); }
+	7.5% { transform: rotate(5deg); }
+	11.25% { transform: rotate(-1deg); }
+	12.5% { transform: rotate(0); }
+}
+
 
 /* Generic page setup */
 html, body {
@@ -931,6 +940,7 @@ section#MSLAppHome .fullpage {
 #statusIcons > .mute { background-image: url('../images/icon-volume-1.png'); }
 #statusIcons > .mute.muted { background-image: url('../images/icon-volume-off.png'); }
 #statusIcons > .compatibility { background-image: url('../images/icon-warning.png'); cursor: pointer; }
+#statusIcons > .compatibility.bad { background-image: url('../images/icon-warning-severe.png'); animation: 5s linear infinite attentionWiggle; }
 
 #statusIcons > #appLock {
 	background-image: url('../images/icon-applock.png');
