@@ -2621,6 +2621,7 @@ text-align: center;
 	list-style-type: none;
 	clear: both;
 	overflow: hidden;
+	user-select: none;
 }
 
 #MSLAppHHaven > main > div.selector > ul > li {
