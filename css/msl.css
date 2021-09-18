@@ -21,6 +21,12 @@
 	12.5% { transform: rotate(0); }
 }
 
+@keyframes lockScreenClickPulse {
+	0% { opacity: 0.2; }
+	50% { opacity: 0.6; }
+	100% { opacity: 0.2; }
+}
+
 
 /* Generic page setup */
 html, body {
@@ -902,7 +908,7 @@ section#MSLAppHome .fullpage {
 }
 
 #statusIcons {
-	width: 144px;
+	width: 300px;
 	height: 34px;
 	position: absolute;
 	top: 4px;
@@ -941,6 +947,7 @@ section#MSLAppHome .fullpage {
 #statusIcons > .mute.muted { background-image: url('../images/icon-volume-off.png'); }
 #statusIcons > .compatibility { background-image: url('../images/icon-warning.png'); cursor: pointer; }
 #statusIcons > .compatibility.bad { background-image: url('../images/icon-warning-severe.png'); animation: 5s linear infinite attentionWiggle; }
+#statusIcons > .privateModeEnabled { background-image: url('../images/icon-privatemode.png'); }
 
 #statusIcons > #appLock {
 	background-image: url('../images/icon-applock.png');
@@ -1217,6 +1224,19 @@ div#homeMainMenuBars > div > span.new {
 	position: absolute;
 	top: calc( 83px / 2 - 10px );
 	right: 25px;
+}
+
+div#homeMainMenuBars > div.small > span.new {
+	width: 14px;
+	height: 14px;
+	border-radius: 28px;
+	background-image: none;
+	background-color: #f00;
+	top: calc( 50px / 2 - 7px );
+}
+
+#hmmSettings:hover > span.new {
+	display: none;
 }
 
 #hmmWeb { background-image: url('../images/apps/web/mms_browser_bg.png'); }
@@ -3495,7 +3515,7 @@ div.formgroup.horizontal > .right {
 	margin-right: 2em;
 }
 
-#MSLAppSettings > main > section > h1 {
+#MSLAppSettings > main > section h1 {
 	font-size: 28px;
 	font-weight: 400;
 	text-transform: uppercase;
@@ -3504,13 +3524,34 @@ div.formgroup.horizontal > .right {
 	margin-bottom: 3px;
 }
 
-#SettingsMenu > ul {
+#settingsMenuContainer {
+	height: 425px;
+	display: flex;
+	flex-direction: row;
+	align-items: space-between;
+}
+
+#settingsMenuBody {
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+#settingsMenuScroll {	
+	height: 425px;
+	margin: 0;
+}
+
+#settingsMenuBody {
+	width: 100%;
+}
+
+#SettingsMenu ul {
 	list-style-type: none;
 	margin-bottom: 1em;
 	user-select: none;
 }
 
-#SettingsMenu > ul > li {
+#SettingsMenu ul > li {
 	font-size: 20px;
 	font-weight: 300;
 	color: #fff;
@@ -3518,11 +3559,11 @@ div.formgroup.horizontal > .right {
 	cursor: pointer;
 }
 
-#SettingsMenu > ul > li:hover {
+#SettingsMenu ul > li:hover {
 	background-color: rgba( 255, 255, 255, 0.35 );
 }
 
-#SettingsMenu > ul > li p {
+#SettingsMenu ul > li p {
 	padding: 5px;
 }
 
@@ -3675,14 +3716,15 @@ section#SettingsCopySettings hr {
 }
 
 li.setting {
-	clear: both;
-	overflow: hidden;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-flow: row;
+	justify-content: space-between;
 	cursor: auto !important;
 }
 
 li.setting > .label {
-	float: left;
-	width: 40%;
+	width: 300px;
 }
 
 li.setting > .label > p > span.orange {
@@ -3692,70 +3734,72 @@ li.setting > .label > p > span.orange {
 	text-shadow: -1px -1px 0 #444, 1px -1px 0 #444, -1px 1px 0 #444, 1px 1px 0 #444;
 }
 
-li.setting > .SettingsSelection {
-	float: right;
-	width: 229px;
+li.setting .SettingsSelection {
+	width: 230px;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-flow: row;
+	justify-content: space-between;
 }
 
-li.setting > .SettingsSelection > .prev {
+li.setting .SettingsSelection > .prev {
 	width: 32px;
 	height: 35px;
-	float: left;
 	background: url("../images/arrow-left.png") no-repeat center center;
 	cursor: pointer;
 	opacity: .7;
 }
 
-li.setting > .SettingsSelection > .next {
+li.setting .SettingsSelection > .next {
 	width: 32px;
 	height: 35px;
-	float: left;
 	background: url("../images/arrow-right.png") no-repeat center center;
 	cursor: pointer;
 	opacity: .7;
 }
 
-li.setting > .SettingsSelection > .prev:hover {
+li.setting .SettingsSelection > .prev:hover {
 	opacity: 1;
 }
 
-li.setting > .SettingsSelection > .next:hover {
+li.setting .SettingsSelection > .next:hover {
 	opacity: 1;
 }
 
-li.setting > .SettingsSelection > .value {
+li.setting .SettingsSelection > .value {
 	width: 165px;
 	height: 35px;
-	float: left;
 	text-align: center;
 	line-height: 35px;
 }
 
-li.setting > .SettingsSelection > .value > option {
+li.setting .SettingsSelection > .value > option {
 	display: none;
 }
 
-li.setting > .SettingsSelection > .value > option.selected {
+li.setting .SettingsSelection > .value > option.selected {
 	display: inline;
 }
 
-li.setting > .SettingsInput {
-	float: right;
-	width: 520px;
+li.setting .SettingsInput {
+	width: 100%;
+	max-width: 480px;
+	display: flex;
+	flex-wrap: nowrap;
+	flex-flow: row;
+	justify-content: flex-start;
 }
 
-li.setting > .SettingsInput > .value {
-	width: 488px;
+li.setting .SettingsInput > .value {
+	width: 100%;
 	height: 35px;
-	float: left;
 	text-align: center;
 	line-height: 35px;
 }
 
-li.setting > .SettingsInput > .save {
+li.setting .SettingsInput > .save {
 	width: 32px;
 	height: 35px;
-	float: left;
 	background: url("../images/icon-save.png") no-repeat center calc(50% + 1px);
 	background-size: 25px auto;
 	cursor: pointer;
@@ -3763,6 +3807,13 @@ li.setting > .SettingsInput > .save {
 	top: -1px;
 	left: -2px;
 	z-index: 2;
+}
+
+li.setting .SettingsInput > .save.standalone {
+	background-color: rgba( 255, 255, 255, 0.88 );
+	border-radius: 3px;
+	margin: 4px 0 0;
+	height: 30px;
 }
 
 @keyframes scaleblink {
@@ -3782,6 +3833,15 @@ li.setting .SettingsInput > .save.changes {
 	animation-timing-function: linear;
 }
 
+li.setting > div.multiple {
+	width: 100%;
+	max-width: 480px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+}
+
 li.setting input {
 	width: calc(100% + 24px - 30px);
 	height: 30px;
@@ -3797,11 +3857,39 @@ li.setting input {
 	z-index: 1;
 }
 
+li.setting .PIN {
+	clear: both;
+	margin-right: 6px;
+	float: right;
+}
+
+li.setting .PIN.changed > .PINPart {
+	background-color: rgba( 255, 240, 180, 0.88 );
+}
+
+li.setting input.PINPart {
+	width: 34px;
+	padding: 0;
+	text-align: center;
+	font-size: 120%;
+	font-weight: 500;
+	float: left;
+}
+
+li.setting input.PINPart:focus {
+	background-color: rgba( 240, 240, 240, 0.88 );
+	outline: none;
+}
+
+li.setting input.PINPart.invalid {
+	background-color: rgba( 255, 200, 200, 0.88 ) !important;
+}
+
 li.setting select {
 	position: relative;
 	top: -1px;
 	z-index: 1;
-	width: calc(100% + 30px);
+	width: 100%;
 	height: 30px;
 	margin: 4px 0;
 	padding: 0 0 0 6px;
@@ -3816,6 +3904,14 @@ li.setting select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
+}
+
+/*#SettingsMenuPrivateMode .SettingsInput {
+	width: 300px;
+}*/
+
+#SettingsMenuPrivateMode .SettingsInput > div.value {
+	width: auto;
 }
 
 /* Help definitions (help.css) */
@@ -3903,6 +3999,111 @@ section#MSLAppHelp button {
 	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.8);
 }
 
+/* Private Mode Screen */
+div#PrivateModeLockScreen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 1024px;
+	height: 576px;
+	backdrop-filter: blur( 10px );
+	background-color: rgba( 0, 0, 0, 0.6 );
+}
+
+div#PrivateModeLockScreen > div {
+	width: 80%;
+}
+
+section#PrivateModeLockScreenTitle > h1 {
+	font-weight: 500;
+	font-size: 46px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	user-select: none;
+}
+
+section#PrivateModeLockScreenWelcome > h2 {
+	font-weight: 400;
+	font-size: 26px;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	opacity: 0.2;
+	user-select: none;
+	animation: lockScreenClickPulse 4s ease-in-out infinite;
+}
+
+section#PrivateModeLockScreenInput {
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+section#PrivateModeLockScreenInput > h2 {
+	font-weight: 400;
+	font-size: 26px;
+	text-align: center;
+	color: #fff;
+	user-select: none;
+}
+
+div#PrivateModeLockScreenCodeContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 200px;
+	margin: 40px auto 30px;
+}
+
+div#PrivateModeLockScreenCodeContainer.processing > div {
+	animation: lockScreenClickPulse 4s ease-in-out infinite;
+}
+
+div#PrivateModeLockScreenCodeContainer > div {
+	width: 32px;
+	border-bottom: 8px solid #fff;
+	font-family: "Roboto Condensed";
+	font-size: 61px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 48px;
+	color: #fff;
+	user-select: none;
+}
+
+div#PrivateModeLockScreenPad {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 235px;
+	margin: 0 auto;
+}
+
+div#PrivateModeLockScreenPad > div {
+	width: 64px;
+	height: 64px;
+	border: 3px solid #fff;
+	border-radius: 36px;
+	font-size: 36px;
+	font-weight: 400;
+	color: #fff;
+	margin-bottom: 14px;
+	text-align: center;
+	line-height: 64px;
+	cursor: pointer;
+	transition: background-color .2s ease;
+	transition: border-color .2s linear;
+	user-select: none;
+}
+
+div#PrivateModeLockScreenPad > div:hover {
+	background-color: rgba( 255, 255, 255, 0.2 );
+}
+
+div#PrivateModeLockScreenPad > div:active {
+	border-color: #f16529;
+	transition: border-color 0s linear;
+}
 
 /* Prompt dialog styling */
 div.prompt {
