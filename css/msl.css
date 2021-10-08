@@ -27,6 +27,17 @@
 	100% { opacity: 0.2; }
 }
 
+@keyframes loadingDots {
+	0% { content: ""; }
+	25% { content: "."; }
+	50% { content: ".."; }
+	75% { content: "..."; }
+}
+
+@keyframes rotate {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
 
 /* Generic page setup */
 html, body {
@@ -676,6 +687,73 @@ div.criticalAppError p {
 	color: #ffffff;
 }
 
+div.statusMessage {
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #fff;
+}
+
+div.statusMessage > .graphic {
+min-width: 32px;
+min-height: 32px;
+background-repeat: no-repeat;
+background-position: center center;
+}
+
+div.statusMessage > .graphic.loading {
+background-image: url("../images/loading.gif");
+}
+
+.loadingDots {
+display: inline-block;
+min-width: 16px;
+min-height: 1px;
+}
+
+.loadingDots::after {
+content: "";
+animation: loadingDots 3s linear infinite;
+}
+
+/* MSL Video Player */
+.MSLVideoPlayer {
+width: 1024px;
+height: 576px;
+position: relative;
+}
+
+.MSLVideoPlayer > video,
+.MSLVideoPlayer > div.plyr {
+width: 100%;
+height: 100%;
+z-index: 1;
+position: absolute;
+top: 0; left: 0;
+}
+
+.MSLVideoPlayer > div.statusMessage {
+z-index: 99;
+position: absolute;
+top: 0; left: 0;
+}
+
+.MSLVideoPlayer > div.statusMessage > div.loading {
+width: 258px;
+height: 258px;
+background: url("../images/load-big.png") no-repeat;
+animation: rotate .9s linear infinite;
+}
+
+.MSLVideoPlayer > div.statusMessage > div.text {
+position: absolute;
+font-size: 42px;
+text-transform: uppercase;
+font-weight: 700;
+}
+
 /* SCROLLBAR */
 div.scrollbar {
 	width: 3px;
@@ -1050,6 +1128,7 @@ div#homeMainMenuTiles > div > div.bg {
 	z-index: 1;
 	opacity: 1;
 	transition: .35s opacity ease;
+	background-size: cover;
 }
 
 div#homeMainMenuTiles > div:hover > div.bg {
@@ -1125,9 +1204,15 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmKaraoke > div.logo { background-image: url('../images/apps/karaoke/karaokeLogo.png'); }
 #hmmKaraoke > div.text { background-image: url('../images/apps/karaoke/karaokeText.png'); }
 
+#hmmPlutotv > div.bg { background-image: url('../images/apps/plutotv/plutotv.png'); }
+#hmmPlutotv:hover > div.logo { background-position: center 22px !important; }
+#hmmPlutotv:hover > div.text { background-position: center 92px !important; }
+#hmmPlutotv > div.logo { background-image: url('../images/apps/plutotv/plutotvLogo.png'); }
+#hmmPlutotv > div.text { background-image: url('../images/apps/plutotv/plutotvText.png'); }
+
 #hmmHentaiHaven { background-color: #000 !important; }
 #hmmHentaiHaven.hentaihaven > div.bg { background-image: url('../images/apps/adult/hentaihaven.png'); }
-#hmmHentaiHaven.tsumino > div.bg { background-image: url('../images/apps/adult/tsumino.png'); background-size: cover; }
+#hmmHentaiHaven.tsumino > div.bg { background-image: url('../images/apps/adult/tsumino.png'); }
 #hmmHentaiHaven:hover > div.logo { background-position: center 22px !important; }
 #hmmHentaiHaven.blurred:hover > div.text { }
 #hmmHentaiHaven.unavailable:hover > div.text { }
@@ -2002,6 +2087,84 @@ div.playall > div.stats > p.small {
 
 #MSLAppTwitchWatch .preventPlayerHoverPopups {
 	height: 360px;
+}
+
+/* Pluto TV app definitions (plutotv.css) */
+#MSLAppPlutotv > header > div.appLogo { background-image: url('../images/apps/plutotv/plutotvText.png'); }
+
+#MSLAppPlutotv > header > div.search {
+	width: 736px;
+}
+
+#MSLAppPlutotv > header > div.search > input {
+	width: 690px;
+}
+
+#MSLAppPlutotv > main {
+	height: 466px;
+	margin: 22px 30px 30px 30px;
+}
+
+#plutotvChannelList {
+	height: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	padding: 2px;
+	position: relative;
+	top: -2px;
+	left: -2px;
+}
+
+#plutotvChannelList::-webkit-scrollbar {
+	display: none;
+}
+
+#plutotvChannelList > div {
+	width: 146px;
+	height: 146px;
+	margin: 14px 0 0 14px;
+	background-color: rgba( 0, 0, 0, 0.3 );
+	backdrop-filter: blur(5px);
+	cursor: pointer;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#plutotvChannelList > div > img {
+	display: block;
+	width: 90%;
+	filter: drop-shadow( 0px 0px 6px rgba(0, 0, 0, 0.4));
+	user-select: none;
+}
+
+#plutotvChannelList > div:hover {
+	outline: 2px solid rgba( 255, 255, 255, 1.0 );
+}
+
+#plutotvChannelList > div:hover > img {
+	width: 100%;
+}
+
+#plutotvChannelList > div:nth-child(-n+6) {
+	margin-top: 0;
+}
+
+#plutotvChannelList > div:nth-child(6n+1) {
+	margin-left: 0;
+}
+
+#plutotvScroll {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	height: 100%;
+	margin: 0;
 }
 
 /* Youtube app definitions (youtube.css) */
