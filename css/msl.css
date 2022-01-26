@@ -3068,6 +3068,24 @@ text-align: center;
 /* Altai app definitions (altai.css) */
 #MSLAppAltai > header > div.appLogo { background-image: url('../images/logo-altai.png'); }
 
+.badgeVideo {
+	background-color: #ff8e50;
+	padding: 1px 4px;
+	border-radius: 5px;
+}
+
+.badgeAudio {
+	background-color: #a850ff;
+	padding: 1px 4px;
+	border-radius: 5px;
+}
+
+.badgePicture {
+	background-color: #5094ff;
+	padding: 1px 4px;
+	border-radius: 5px;
+}
+
 #MSLAppAltai > main {
 	height: 488px;
 	margin: 32px 16px 0;
@@ -3083,7 +3101,7 @@ div.altaiInputDialog {
 	width: 812px;
 	border: 4px solid #fff;
 	border-radius: 3px;
-	margin: 60px auto;
+	margin: 24px auto;
 }
 
 div.altaiInputDialog > header {
