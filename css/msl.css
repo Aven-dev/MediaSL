@@ -971,6 +971,7 @@ section#MSLAppHome > header > img {
 }
 
 section#MSLAppHome > header > time {
+	height: 35px;
 	font-size: 41px;
 	font-weight: 100;
 	color: #fff;
