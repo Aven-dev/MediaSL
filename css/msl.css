@@ -355,6 +355,17 @@ div.fullscreenOverlay > div.qm {
 	z-index: 999;
 }
 
+div.fullscreenOverlay > div.qm.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 4px;
+	max-width: calc(4px * 3 + 100px * 4);
+}
+
+div.fullscreenOverlay > div.qm.flex.col3 {
+	max-width: calc(4px * 2 + 100px * 3);
+}
+
 div.fullscreenOverlay > div.qm > div {
 	width: 100px;
 	height: 100px;
@@ -364,6 +375,10 @@ div.fullscreenOverlay > div.qm > div {
 	position: relative;
 	cursor: pointer;
 	float: left;
+}
+
+div.fullscreenOverlay > div.qm.flex > div {
+	margin: 0;
 }
 
 div.fullscreenOverlay > div.qm > div:hover {
