@@ -2,6 +2,10 @@
 	--plyr-color-main: #ff6714;
 }
 
+.plyr {
+	height: 576px !important;
+}
+
 button.plyr__control--overlaid {
 	display: none !important;
 }
