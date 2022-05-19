@@ -1229,6 +1229,7 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmHentaiHaven { background-color: #000 !important; }
 #hmmHentaiHaven.hentaihaven > div.bg { background-image: url('../images/apps/adult/hentaihaven.png'); }
 #hmmHentaiHaven.tsumino > div.bg { background-image: url('../images/apps/adult/tsumino.png'); }
+#hmmHentaiHaven.hanime > div.bg { background-image: url('../images/apps/adult/hanime.png'); }
 #hmmHentaiHaven:hover > div.logo { background-position: center 22px !important; }
 #hmmHentaiHaven.blurred:hover > div.text { }
 #hmmHentaiHaven.unavailable:hover > div.text { }
@@ -1236,6 +1237,8 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmHentaiHaven.hentaihaven > div.text { background-image: url('../images/apps/adult/hentaihavenText.png'); }
 #hmmHentaiHaven.tsumino > div.logo { background-image: url('../images/apps/adult/tsuminoLogo.png'); }
 #hmmHentaiHaven.tsumino > div.text { background-image: url('../images/apps/adult/tsuminoText.png'); }
+#hmmHentaiHaven.hanime > div.logo { background-image: url('../images/apps/adult/hanimeLogo.png'); }
+#hmmHentaiHaven.hanime > div.text { background-image: url('../images/apps/adult/hanimeText.png'); }
 #hmmHentaiHaven > video { filter: brightness(70%) !important; }
 
 #hmmRedTube > div.bg { background-image: url('../images/apps/adult/redtube.png'); }
@@ -2792,8 +2795,9 @@ text-align: center;
 
 
 /* Hentai Haven app definitions (hhaven.css) */
-#MSLAppHHaven > header > div.appLogo.hentaihaven { background-image: url('../images/logo-hhaven.png'); }
-#MSLAppHHaven > header > div.appLogo.tsumino { background-image: url('../images/logo-tsumino.png'); }
+#MSLAppHHaven > header > div.appLogo.hentaihaven { background-image: url('../images/apps/adult/hentaihavenText.png'); }
+#MSLAppHHaven > header > div.appLogo.tsumino { background-image: url('../images/apps/adult/tsuminoText.png'); }
+#MSLAppHHaven > header > div.appLogo.hanime { background-image: url('../images/apps/adult/hanimeText.png'); }
 
 #MSLAppHHaven > header > div.categories:not([num="0"]) {
 	background-image: url('../images/tag-selected.png');
