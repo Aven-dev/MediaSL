@@ -162,6 +162,15 @@ body > div#underlay > div#gameAnimatedBackground > div {
 }
 
 /* Common definitions (common.css) */
+.lazy {
+	opacity: 0.0;
+	transition: opacity 0.2s linear;
+}
+
+.lazy-loaded {
+	opacity: 1.0;
+}
+
 .appNotice h3,
 .appNotice h4,
 .appNotice p {
@@ -504,6 +513,10 @@ div.appLogo:hover {
 	overflow: hidden;
 }
 
+.navStandardHeader > header > div.search.disabled {
+	opacity: .5;
+}
+
 .navStandardHeader > header > div.search > input[type="text"] {
 	padding: 0 6px;
 	font-size: 1em;
@@ -526,6 +539,10 @@ div.appLogo:hover {
 	background: transparent url('../images/search-gray.png') no-repeat center center;
 	transition: all .25s ease;
 	opacity: .4;
+}
+
+.navStandardHeader > header > div.search.filter > button[type="submit"] {
+	background-image: url('../images/search-filter-gray.png');
 }
 
 .navStandardHeader > header > div.search > button[type="toggle"] {
@@ -577,6 +594,10 @@ div.appLogo:hover {
 	background-repeat: no-repeat;
 	background-position: center center;
 	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+.navStandardHeader > header > div.categories.disabled {
+	opacity: .5;
 }
 
 .navStandardHeader > header > div.categories:hover {
@@ -797,6 +818,7 @@ div.scrollbar {
 	background-color: #f1f1f1;
 	position: relative;
 	border-radius: 2px;
+	min-height: 50px;
 }
 
 .scrollbar > div.track > div.thumb.top {
@@ -1225,6 +1247,12 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmPlutotv:hover > div.text { background-position: center 92px !important; }
 #hmmPlutotv > div.logo { background-image: url('../images/apps/plutotv/plutotvLogo.png'); }
 #hmmPlutotv > div.text { background-image: url('../images/apps/plutotv/plutotvText.png'); }
+
+#hmmPlex > div.bg { background-image: url('../images/apps/plex/plex.png'); }
+#hmmPlex:hover > div.logo { background-position: center 22px !important; }
+#hmmPlex:hover > div.text { background-position: center 92px !important; }
+#hmmPlex > div.logo { background-image: url('../images/apps/plex/plexLogo.png'); }
+#hmmPlex > div.text { background-image: url('../images/apps/plex/plexText.png'); }
 
 #hmmHentaiHaven { background-color: #000 !important; }
 #hmmHentaiHaven.hentaihaven > div.bg { background-image: url('../images/apps/adult/hentaihaven.png'); }
@@ -2184,6 +2212,602 @@ div.playall > div.stats > p.small {
 	left: 100%;
 	height: 100%;
 	margin: 0;
+}
+
+/* Plex app definitions (plex.css) */
+#MSLAppPlex {
+	background-image: url('../images/apps/plex/plexBackground.png');
+}
+
+#MSLAppPlex > header > div.appLogo { background-image: url('../images/apps/plex/plexText.png'); }
+
+#MSLAppPlex > header > div.categories {
+	position: relative;
+	overflow: hidden;
+}
+
+#MSLAppPlex > header > div.categories > div {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transition: 0.2s all linear;
+	opacity: 0;
+}
+
+#MSLAppPlex > header > div.categories > div[pos="-1"] { left: -218px; }
+#MSLAppPlex > header > div.categories > div[pos="0"] { left: 0; opacity: 1; cursor: pointer; }
+#MSLAppPlex > header > div.categories > div[pos="1"] { left: 218px; }
+
+#MSLAppPlex div.scrollbar div.thumb {
+	background-color: #e5a00d;
+}
+
+#MSLAppPlex > main {
+	height: 492px;
+	margin: 15px 20px 12px 16px;
+}
+
+#MSLAppPlex > main > section {
+	height: 100%;
+}
+
+#plexHome {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#plexHome > nav {
+	height: 488px;
+}
+
+#plexHome > nav > ul {
+	height: 100%;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	gap: 2px;
+	justify-content: space-between;
+}
+
+#plexHome > nav > ul > li {
+	width: 140px;
+	height: 37px;
+	border-radius: 3px;
+	background-color: #3d3d3d;
+	cursor: pointer;
+	opacity: .75;
+	font-size: 18px;
+	
+	line-height: 37px;
+	color: #fff;
+	font-weight: 500;
+	user-select: none;
+	padding-left: 11px;
+	box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+}
+
+#plexHome > nav > ul > li:hover {
+	background-color: #535353;
+	box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.5);
+}
+
+#plexHome > nav > ul > li.selected {
+	background-color: #e5a00d;
+	opacity: 1;
+}
+
+#plexHome > main {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	margin-left: 16px;
+}
+
+#plexIndex {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	column-gap: 16px;
+	row-gap: 16px;
+	overflow-y: scroll;
+	scrollbar-width: none;
+	position: relative;
+}
+
+#plexIndex::-webkit-scrollbar {
+	display: none;
+}
+
+#plexIndex > div.noresult {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+	font-weight: 400;
+	font-size: 18px;
+}
+
+#plexIndex > div.noresult > strong {
+	font-weight: 500;
+}
+
+#plexIndex > div.noresult > span {
+	font-weight: 300;
+}
+
+#plexIndex > div.item {
+	aspect-ratio: 126/191;
+	object-fit: contain;
+	cursor: pointer;
+	border-radius: 3px;
+	user-select: none;
+}
+
+#plexIndex > div.item > div {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+#plexIndex > div.item > div > div.thumb {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+#plexIndex > div.item > div > div.thumb > img {
+	width: 100%;
+	height: 100%;
+}
+
+#plexIndex > div.item > div > div.thumb > img:hover {
+	filter: brightness(1.1);
+}
+
+#plexIndex > div.item > div > div.info {
+	position: absolute;
+	overflow: hidden;
+	color: #f0f0f0;
+	font-size: 22px;
+	text-align: center;
+	padding: 12px;
+	width: calc( 100% - 24px );
+	height: calc( 100% - 24px );
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+#plexIndex > div.item > div > div.info:hover {
+	color: #fff;
+}
+
+#plexIndex > div.instructions {
+	grid-column-end: span 5;
+}
+
+#plexIndexScroll {
+	position: relative;
+	left: 8px;
+	margin-left: 0;
+	height: auto;
+}
+
+/* Plex Index definitions (plexIndex.css) */
+#MSLAppPlexIndex {
+	background-color: rgb( 0, 0, 0 );
+	background-size: cover;
+	background-image: url('../images/apps/plex/plexBackground.png');
+}
+
+#MSLAppPlexIndexBackground {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+
+#MSLAppPlexIndexBackground > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+}
+
+#MSLAppPlexIndexBackground > img.loaded {
+	opacity: .5;
+}
+
+/*#MSLAppPlexIndex.movie > #MSLAppPlexIndexBackground {
+	opacity: .5;
+}
+
+#MSLAppPlexIndex.show > #MSLAppPlexIndexBackground {
+	filter: blur(6px);
+	transform: scale(1.02);
+}*/
+
+#MSLAppPlexIndex > header > div.appLogo { background-image: url('../images/apps/plex/plexText.png'); }
+
+#plexMovieDetails {
+	display: flex;
+	justify-content: space-between;
+	margin: 16px 20px 24px 16px;
+	height: 480px;
+	border-radius: 3px;
+	overflow: hidden;
+	backdrop-filter: blur(6px);
+	background-color: rgba( 0, 0, 0, 0.5 );
+}
+
+#plexMovieDetailsArt {
+	width: 322px;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border-radius: 3px;
+	opacity: 0;
+	transition: opacity 0.2s linear;
+}
+
+#plexMovieDetailsArt.loaded {
+	opacity: 1;
+}
+
+#plexMovieDetailsInfo {
+	color: #fff;
+	width: 600px;
+	height: 100%;
+	margin: 0 30px;
+}
+
+#plexMovieDetailsInfo > header {
+	margin-top: 25px;
+}
+
+#plexMovieDetailsInfo > header > h1 {
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1;
+	color: #e5a00d;
+}
+
+#plexMovieDetailsInfo > header > h2 {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+#plexMovieDetailsInfo > header > h3 {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+#plexMovieDetailsInfo > header > ul {
+	list-style: none;
+	display: flex;
+	justify-content: flex-start;
+	gap: 0.75em;
+	margin-top: 12px;
+}
+
+#plexMovieDetailsInfo > header > ul > li {
+	font-size: 12px;
+	font-weight: 500;
+}
+
+#plexMovieDetailsInfo > header > div.rating {
+	width: 115px;
+	height: 23px;
+	background-image: url('../images/star-off.png');
+	background-repeat: repeat-x;
+	margin: 4px 0;
+}
+
+#plexMovieDetailsRating {
+	width: 0;
+	height: 23px;
+	background-image: url('../images/star-on.png');
+	background-repeat: repeat-x;
+}
+
+#plexMovieDetailsRating[rating="0"] { width: 11px; }
+#plexMovieDetailsRating[rating="1"] { width: 11px; }
+#plexMovieDetailsRating[rating="2"] { width: 23px; }
+#plexMovieDetailsRating[rating="3"] { width: 34px; }
+#plexMovieDetailsRating[rating="4"] { width: 46px; }
+#plexMovieDetailsRating[rating="5"] { width: 57px; }
+#plexMovieDetailsRating[rating="6"] { width: 69px; }
+#plexMovieDetailsRating[rating="7"] { width: 80px; }
+#plexMovieDetailsRating[rating="8"] { width: 92px; }
+#plexMovieDetailsRating[rating="9"] { width: 103px; }
+#plexMovieDetailsRating[rating="10"] { width: 115px; }
+
+#plexMovieDetailsInfo > header > h4 {
+	font-size: 14px;
+	font-weight: 300;
+}
+
+#plexMovieDetailsInfo > header > h4 > strong {
+	font-weight: 500;
+}
+
+#plexMovieDetailsInfo > section.controls {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-end;
+	gap: 8px;
+	margin: 12px 0 24px;
+}
+
+#plexMovieDetailsInfo > section.controls > button {
+	width: 120px;
+	height: 32px;
+	background-color: #e5a00d;
+	background-image: url('../images/btn-fwd-black.png');
+	background-repeat: no-repeat;
+	border: 0;
+	border-radius: 3px;
+	font-size: 24px;
+	font-weight: 500;
+	color: #000;
+	text-transform: uppercase;
+	transform: background-color 0.3s linear;
+}
+
+#plexMovieDetailsInfo > section.controls > button:hover {
+	background-color: #f2b73a;
+}
+
+#plexMovieDetailsInfo > section.controls > p {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+#plexMovieDetailsInfo > section.description {
+	position: relative;
+	height: 201px;
+}
+
+#plexMovieDetailsInfo > section.description p {
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 1em;
+	text-align: justify;
+}
+
+#plexMovieDetailsInfo > section.description p:first-of-type {
+	text-indent: 38px;
+	margin-top: 0;
+}
+
+#plexMovieDetailsSummary {
+	position: absolute;
+	top: 0; left: 0;
+	height: 100%;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+#plexMovieDetailsSummary::-webkit-scrollbar {
+	display: none;
+}
+
+#plexMovieDetailsSummaryScroll {
+	position: absolute;
+	top: 0; right: -23px;
+	height: 100%;
+}
+
+#plexMovieDetailsSummaryScroll .thumb {
+	background-color: #e5a00d;
+}
+
+#plexShowDetails {
+	display: flex;
+	justify-content: space-between;
+	margin: 16px 20px 24px 16px;
+	height: 480px;
+	border-radius: 3px;
+	gap: 15px;
+}
+
+#plexShowDetailsInfo {
+	width: 330px;
+	height: 100%;
+	border-radius: 3px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-size: cover;
+}
+
+#plexShowDetailsInfo .subtitle {
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+	gap: 8px;
+}
+
+#plexShowDetailsInfo > header,
+#plexShowDetailsInfo > footer {
+	margin: 10px 11px;
+}
+
+#plexShowDetailsInfo h1 {
+	font-size: 24px;
+	font-weight: 700;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+}
+
+#plexShowDetailsInfo h2 {
+	font-size: 24px;
+	font-weight: 500;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	line-height: 1;
+}
+
+#plexShowDetailsInfo h3 {
+	font-size: 14px;
+	font-weight: 400;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+}
+
+#plexShowDetailsInfo p {
+	font-size: 12px;
+	font-weight: 300;
+	color: #fff;
+	text-align: justify;
+}
+
+#plexShowDetailsList {
+	width: 643px;
+}
+
+#plexShowSeasons,
+#plexShowEpisodes {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+#plexShowSeasonList,
+#plexShowEpisodeList {
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+#plexShowSeasonList::-webkit-scrollbar,
+#plexShowEpisodeList::-webkit-scrollbar {
+	display: none;
+}
+
+#plexShowSeasonListScroll,
+#plexShowEpisodeListScroll {
+	position: absolute;
+	top: 0;
+	right: -8px;
+	height: 100%;
+}
+
+#plexShowSeasonListScroll .thumb,
+#plexShowEpisodeListScroll .thumb {
+	background-color: #e5a00d;
+}
+
+#plexShowSeasonList > ul {
+	list-style: none;
+	margin-right: 19px;
+}
+
+#plexShowSeasonList > ul > li {
+	height: 32px;
+	line-height: 32px;
+	font-size: 20px;
+	font-weight: 700;
+	color: #fff;
+	padding-left: 9px;
+	background-color: #3d3d3d;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 8px;
+	transition: background-color 0.1s linear;
+	border-left: 5px solid #e5a00d;
+	user-select: none;
+}
+
+#plexShowSeasonList > ul > li:first-child {
+	margin-top: 0;
+}
+
+#plexShowSeasonList > ul > li:hover {
+	background-color: #e5a00d;
+}
+
+#plexShowEpisodeList {
+	display: flex;
+	justify-content: flex-start;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	gap: 7px 8px;
+
+}
+
+#plexShowEpisodeList > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 150px;
+	height: 112px;
+	background-color: #3d3d3d;
+	background-repeat: no-repeat;
+	background-size: cover;
+	cursor: pointer;
+	user-select: none;
+}
+
+#plexShowEpisodeList > div > header {
+	font-size: 12px;
+	font-weight: 300;
+	text-shadow: 2px 2px 3px #000;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 2px 0 0 2px;
+}
+
+#plexShowEpisodeList > div:not(.artless) > header::before {
+	content: "EPISODE ";
+}
+
+#plexShowEpisodeList > div.artless > header {
+	height: 56px;
+	font-weight: 700;
+	font-size: 38px;
+	text-align: center;
+	line-height: 82px;
+	padding: 0;
+}
+
+#plexShowEpisodeList > div > footer {
+	font-size: 16px;
+	font-weight: 600;
+	text-shadow: 2px 2px 3px #000;
+	text-align: right;
+	color: #fff;
+	padding: 0 4px 2px 0;
+}
+
+#plexShowEpisodeList > div.artless > footer {
+	height: 53px;
+	text-align: center;
+	font-weight: 400;
+	padding: 0 6px;
+}
+
+#plexShowEpisodeList > div:hover {
+	filter: brightness(1.1);
 }
 
 /* Youtube app definitions (youtube.css) */
