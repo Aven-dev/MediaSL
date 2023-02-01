@@ -1,0 +1,90 @@
+#MSLAppSpecial .index {
+	clear: both;
+	margin: 8px;
+}
+
+#MSLAppSpecial .index > div {
+	float: left;
+	width: 225px;
+	height: 225px;
+	margin: 16px;
+	padding: 3px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-origin: content-box;
+	border: 1px solid rgba( 255, 255, 255, 0.45 );
+	cursor: pointer;
+}
+
+#MSLAppSpecial .index > div:hover { border-color: #fff; }
+#MSLAppSpecial .index > div.game1 { background-image: url('../images/1.png'); }
+#MSLAppSpecial .index > div.game2 { background-image: url('../images/2.png'); }
+
+#MSLAppSpecial1 #playeroverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+
+#MSLAppSpecial1 #playeroverlay > div {
+	position: relative;
+	z-index: 99;
+	display: none;
+	
+	font-size: 32px;
+	font-weight: 500;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: rgba( 255, 255, 255, .85 );
+}
+
+#MSLAppSpecial1 #playeroverlay > div.keymsg {
+	top: 292px;
+	left: 0px;
+	background-color: #000;
+	width: 1024px;
+	height: 125px;
+	text-align: center;
+	line-height: 60px;
+}
+
+#MSLAppSpecial1 #playeroverlay > div.keymsg > .key {
+	letter-spacing: 19px;
+	font-size: 28px;
+	color: #cccc00;
+}
+
+
+
+#MSLAppSpecial2 #playeroverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+}
+
+#MSLAppSpecial2 #playeroverlay > div {
+	position: relative;
+	z-index: 99;
+	display: none;
+	
+	font-size: 32px;
+	font-weight: 500;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: rgba( 255, 255, 255, .85 );
+}
+
+#MSLAppSpecial2 #playeroverlay > div.keymsg {
+	top: 355px;
+	left: 0px;
+	width: 1024px;
+	text-align: center;
+	line-height: 60px;
+}
+
+#MSLAppSpecial2 #playeroverlay > div.keymsg > .key {
+	letter-spacing: 15px;
+	font-size: 34px;
+	color: #c8a98c;
+	text-shadow: none;
+}
