@@ -161,6 +161,224 @@ body > div#underlay > div#gameAnimatedBackground > div {
 	background-position: 0px 0px;
 }
 
+div.popup {
+	position: fixed;
+	top: 0; left: 0;
+	width: 1024px;
+	height: 576px;
+	z-index: 10;
+}
+
+div.popup.inactive {
+	display: none !important;
+}
+
+div.popup > div {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(10px);
+	background-color: rgba( 0, 0, 0, 0.6 );
+	color: #fff;
+}
+
+div.popup > div > section {
+	width: 100%;
+	height: 100%;
+}
+
+div#popupGetOwnership header {
+	width: 100%;
+	height: 91px;
+	margin-top: 53px;
+	background-color: #f16528;
+	color: #fff;
+	padding-top: 9px;
+}
+
+div#popupGetOwnership header.error {
+	background-color: #8c0000;
+}
+
+div#popupGetOwnership header.success {
+	background-color: #11a326;
+}
+
+div#popupGetOwnership header > h1 {
+	font-weight: 700;
+	font-size: 46px;
+	text-transform: uppercase;
+	text-align: center;
+	user-select: none;
+}
+
+div#popupGetOwnership header > p {
+	font-weight: 400;
+	font-size: 18px;
+	text-align: center;
+	user-select: none;
+	letter-spacing: 0.5px;
+}
+
+div#popupGetOwnership main {
+	width: 410px;
+	margin: 12px auto 22px;
+}
+
+div#popupGetOwnership main > div.inputcodeScreen {
+	display: flex;
+	justify-content: center;
+	gap: 4px;
+	margin-bottom: 22px;
+}
+
+div#popupGetOwnership main > div.inputcodeScreen > input {
+	flex-grow: 0;
+	width: 47px;
+	border-radius: 6px;
+	border: 0;
+	background-color: rgba(255,255,255,0);
+	transition: background-color .2s ease;
+	color: #fff;
+	text-align: center;
+	font-family: "Roboto Condensed";
+	font-size: 80px;
+	font-weight: 700;
+	letter-spacing: 0;
+	text-indent: -1px;
+	caret-color: transparent;
+}
+
+div#popupGetOwnership main > div.inputcodeScreen > input::placeholder {
+	opacity: 1;
+}
+
+div#popupGetOwnership main > div.inputcodeScreen > input:focus {
+	outline: none;
+	color: #f16528;
+}
+
+div#popupGetOwnership main > div.inputcodeScreen > input:hover {
+	background-color: rgba(255,255,255,0.2);
+}
+
+div#popupGetOwnership main > div.inputcodeScreen > input:disabled {
+	opacity: 0.5;
+}
+
+div#popupGetOwnership main > div.inputcodePad {
+	gap: 10px 22px;
+}
+
+div#popupGetOwnership main > div.inputcodePad > button {
+	width: 64px;
+	font-family: Roboto;
+}
+
+div#popupGetOwnership main > div.inputcodePad > button:disabled {
+	opacity: 0.5;
+}
+
+div#popupGetOwnership footer {
+	width: 410px;
+	display: flex;
+	justify-content: space-between;
+	gap: 22px;
+	margin: 0 auto;
+}
+
+/* Input code pad definitions (inputCodePad.css) */
+.inputcodeScreen {
+	display: flex;
+	justify-content: center;
+	gap: 4px;
+	margin-bottom: 28px;
+}
+
+.inputcodeScreen > input {
+	flex-grow: 1;
+	border-radius: 6px;
+	border-top: 3px solid rgba(255,255,255,0.4);
+	border-bottom: 3px solid #fff;
+	border-left: 1px solid rgba(255,255,255,0.4);
+	border-right: 1px solid rgba(255,255,255,0.4);
+	background-color: rgba(255,255,255,0);
+	color: #fff;
+	text-align: center;
+	font-size: 30px;
+	letter-spacing: 13px;
+	text-indent: 13px;
+}
+
+.inputcodePad {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.inputcodePad > button {
+	width: calc(33% - 8px);
+	height: 64px;
+	border: 3px solid #fff;
+	border-radius: 36px;
+	background-color: rgba(255,255,255,0);
+	font-family: "Roboto Condensed";
+	font-weight: 400;
+	font-size: 36px;
+	color: #fff;
+	text-align: center;
+	line-height: 56px;
+	cursor: pointer;
+	transition: background-color .2s ease;
+	transition: border-color .2s linear;
+	user-select: none;
+}
+
+.inputcodePad > button:hover {
+	background-color: rgba( 255, 255, 255, 0.2 );
+}
+
+.inputcodePad > button:active {
+	border-color: #f16529;
+	transition: border-color 0s linear;
+}
+
+button.inputcodeSubmit,
+button.inputcodeCancel {
+	flex-grow: 1;
+	border-radius: 18px;
+	border: 3px solid white;
+	background: rgba( 255, 255, 255, 0 );
+	color: #fff;
+	text-transform: uppercase;
+	font-family: Roboto;
+	font-weight: 400;
+	font-size: 20px;
+	user-select: none;
+}
+
+button.inputcodeSubmit:disabled,
+button.inputcodeCancel:disabled {
+	color: rgba( 255, 255, 255, 0.35 ) !important;
+	border-color: rgba( 255, 255, 255, 0.35 ) !important;
+	background-color: rgba( 255, 255, 255, 0 ) !important;
+	cursor: default;
+}
+
+button.inputcodeSubmit:hover {
+	background-color: #46ab44;
+	border-color: #46ab44;
+}
+
+button.inputcodeCancel:hover {
+	background-color: #8c0000;
+	border-color: #8c0000;
+}
+
 /* Common definitions (common.css) */
 .lazy {
 	opacity: 0.0;
@@ -2882,6 +3100,7 @@ div.playall > div.stats > p.small {
 	height: 100%;
 	background-color: rgba( 0, 0, 0, 1.0 );
 	color: rgba( 255, 255, 255, 1.0 );
+	z-index: 2;
 }
 
 #youtubePlayerWarning > div {

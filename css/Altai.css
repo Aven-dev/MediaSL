@@ -10,8 +10,12 @@
 #MSLAppAltaiIndex .pagenav {
 	width: 80px;
 	height: 490px;
-	opacity: .35;
 	float: left;
+	opacity: 0;
+}
+
+#MSLAppAltaiIndex .pagenav.active {
+	opacity: 1;
 }
 
 #MSLAppAltaiIndex #pageControlPrev {
