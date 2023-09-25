@@ -5299,3 +5299,7 @@ div.prompt button:hover {
 	display: flex;
 	justify-content: space-between;
 }
+
+#MSLAppYoutube .videoResults .errorMessage > p {
+	text-shadow: -2px -2px 0 #000, 0 -2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000, 2px 2px 0 #000, 0 2px 0 #000, -2px 2px 0 #000, -2px 0 0 #000;
+}
