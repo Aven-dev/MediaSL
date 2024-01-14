@@ -3498,14 +3498,14 @@ div.playall > div.stats > p.small {
 	clear: both;
 }
 
-#MSLAppKaraoke > main > div.selector {
+#MSLAppKaraoke > main div.selector {
 	width: 56px;
 	height: 456px;
 	float: left;
 	overflow: hidden;
 }
 
-#MSLAppKaraoke > main > div.selector > ul > li {
+#MSLAppKaraoke > main div.selector > ul > li {
 	font-size: 42px;
 	font-weight: 300;
 	color: #fff;
@@ -3521,22 +3521,22 @@ div.playall > div.stats > p.small {
 #selector .rel_m2, #selector .rel_p2 { opacity: .6 !important; }
 #selector .rel_m3, #selector .rel_p3 { opacity: .4 !important; }
 
-#MSLAppKaraoke > main > div.selector > ul > li.selected {
+#MSLAppKaraoke > main div.selector > ul > li.selected {
 	font-weight: 500;
 }
 
-#MSLAppKaraoke > main > div.inventory {
+#MSLAppKaraoke > main div.inventory {
 	width: 927px;
 	height: 100%;
 	float: right;
 }
 
-#MSLAppKaraoke > main > div.inventory > ul {
+#MSLAppKaraoke > main div.inventory > ul {
 	list-style-type: none;
 	overflow: hidden;
 }
 
-#MSLAppKaraoke > main > div.inventory > ul > li {
+#MSLAppKaraoke > main div.inventory > ul > li {
 	height: 39px;
 	position: relative;
 	border-radius: 3px;
@@ -3547,11 +3547,11 @@ div.playall > div.stats > p.small {
 	transition: background-color 0.25s linear;
 }
 
-#MSLAppKaraoke > main > div.inventory > ul > li:hover {
+#MSLAppKaraoke > main div.inventory > ul > li:hover {
 	background-color: rgba( 255, 255, 255, .35 );
 }
 
-#MSLAppKaraoke > main > div.inventory > ul > li.selected {
+#MSLAppKaraoke > main div.inventory > ul > li.selected {
 	background-color: rgba( 255, 255, 255, 1 );
 	color: #8c4a61;
 }
@@ -5556,4 +5556,14 @@ div.prompt button:hover {
 
 #MSLAppYoutube .videoResults .errorMessage > p {
 	text-shadow: -2px -2px 0 #000, 0 -2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000, 2px 2px 0 #000, 0 2px 0 #000, -2px 2px 0 #000, -2px 0 0 #000;
+}
+
+.noresults > p {
+	text-align: center;
+	color: #fff;
+	background-color: #000;
+	padding: 1em;
+	font-size: 1.25em;
+	border-radius: 8px;
+	font-weight: 700;
 }
