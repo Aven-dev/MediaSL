@@ -3747,6 +3747,29 @@ section#MSLAppRadioListen div#info {
 	margin: 0 auto;
 }
 
+section#MSLAppRadioListen div.error {
+	width: 940px;
+	clear: both;
+	margin: 0 auto;
+}
+
+section#MSLAppRadioListen div.error h1 {
+	font-size: 38px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+section#MSLAppRadioListen div.error p {
+	font-size: 26px;
+	font-weight: 300;
+	color: #fff;
+}
+
+[hidden]{
+	display: none !important;
+}
+
 section#MSLAppRadioListen div#info > div#artContainer {
 	width: 182px;
 	height: 182px;
