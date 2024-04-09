@@ -851,7 +851,7 @@ div.hideRelatedVideos {
 	top: 0; left: 0;
 	z-index: 99;
 	width: 1024px;
-	height: 536px;
+	height: 525px;
 	overflow: hidden;
 	background-color: black;
 	display: none;
@@ -3695,6 +3695,8 @@ div.playall > div.stats > p.small {
 	width: 748px;
 	height: 50%;
 	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #MSLAppRadio .genre {
