@@ -1,3 +1,9 @@
+:root {
+	--text-shadow: rgba( 0, 0, 0, 0.5 );
+	--error-color: #f00000;
+	--warning-color: #f16529;
+}
+
 /* Global settings */
 * {
 	margin: 0;
@@ -468,7 +474,7 @@ div#popupGetOwnership footer {
 }
 
 .inputcodePad > button:active {
-	border-color: #f16529;
+	border-color: var(--warning-color);
 	transition: border-color 0s linear;
 }
 
@@ -1131,7 +1137,7 @@ div.dropdown > div.content > main > div > div.label:first-child {
 }
 
 .actionmessage > .content strong {
-	color: #f16529;
+	color: var(--warning-color);
 	font-weight: 700;
 }
 
@@ -1326,7 +1332,7 @@ ul.railSubmenu > li > img {
 ul.railmenu > li > div {
 	height: 34px;
 	width: 100%;
-	background: #f16529 url('../images/start.jpg') no-repeat;
+	background: var(--warning-color) url('../images/start.jpg') no-repeat;
 	background-size: 100% auto;
 }
 
@@ -1464,7 +1470,7 @@ div.gridMenuPages > div.selected {
 
 /* Home app definitions (home.css) */
 section#MSLAppHome > header {
-	border-bottom: 2px solid #f16529;
+	border-bottom: 2px solid var(--warning-color);
 }
 
 section#MSLAppHome > header > img {
@@ -1570,7 +1576,7 @@ section#MSLAppHome .fullpage {
 #compatibilitySupport > div {
 	width: 100%;
 	margin: 4px;
-	border: 1px solid #f16529;
+	border: 1px solid var(--warning-color);
 	padding: 16px;
 	color: #fff;
 }
@@ -1581,12 +1587,12 @@ section#MSLAppHome .fullpage {
 	top: 4px;
 	right: 4px;
 	padding: 4px;
-	border: 1px solid #f16529;
+	border: 1px solid var(--warning-color);
 	cursor: pointer;
 }
 
 #compatibilitySupport > div > h1 {
-	color: #f16529;
+	color: var(--warning-color);
 }
 
 #compatibilitySupport > div > p {
@@ -1886,7 +1892,7 @@ div#homeMainMenuBars > div.small > span.new {
 
 /* Games App */
 #MSLAppGames > header {
-	border-bottom: 2px solid #f16529;
+	border-bottom: 2px solid var(--warning-color);
 }
 
 #MSLAppGames > header > img {
@@ -4911,6 +4917,7 @@ div.formgroup.horizontal > .right {
 	color: #fff;
 	transition: all .25s ease;
 	cursor: pointer;
+	text-shadow: -1px -1px 0 var(--text-shadow), 1px -1px 0 var(--text-shadow), -1px 1px 0 var(--text-shadow), 1px 1px 0 var(--text-shadow);
 }
 
 #SettingsMenu ul > li:hover {
@@ -4922,7 +4929,7 @@ div.formgroup.horizontal > .right {
 }
 
 section#MSLAppSettings > header {
-	border-bottom: 2px solid #f16529;
+	border-bottom: 2px solid var(--warning-color);
 }
 
 section#MSLAppSettings > header > img {
@@ -4968,7 +4975,7 @@ div#SettingsMenuToolTip > p {
 }
 
 div#SettingsMenuToolTip > p > span.orange{
-	color: #f16529;
+	color: var(--warning-color);
 }
 
 section#SettingsCopySettings {
@@ -5060,7 +5067,7 @@ section#SettingsCopySettings hr {
 }
 
 .error {
-	color: #f16529;
+	color: var(--warning-color);
 	font-weight: 500;
 }
 
@@ -5070,9 +5077,10 @@ section#SettingsCopySettings hr {
 }
 
 li.setting {
+	position: relative;
 	display: flex;
 	flex-wrap: nowrap;
-	flex-flow: row;
+	flex-flow: row wrap;
 	justify-content: space-between;
 	cursor: auto !important;
 }
@@ -5082,10 +5090,48 @@ li.setting > .label {
 }
 
 li.setting > .label > p > span.orange {
-	color: #f16529;
+	color: var(--warning-color);
 	font-size: 18px;
 	font-weight: 400;
 	text-shadow: -1px -1px 0 #444, 1px -1px 0 #444, -1px 1px 0 #444, 1px 1px 0 #444;
+}
+
+li.setting.error, li.setting.warning {
+	padding-left: 5px;
+}
+
+li.setting.error::before,
+li.setting.warning::before {
+	content: "";
+	top: 6px;
+	left: 0;
+	height: calc( 100% - 12px );
+	position: absolute;
+	width: 4px;
+	background-color: var(--error-color);
+	border-radius: 2px;
+}
+
+li.setting.warning::before {
+	background-color: var(--warning-color);
+}
+
+li.setting > div.message {
+	width: 100%;
+}
+
+li.setting > div.message > p {
+	font-size: 16px;
+	font-weight: 500;
+	padding: 1px 5px 5px !important;
+}
+
+li.setting.error > div.message > p {
+	color: var(--error-color);
+}
+
+li.setting.warning > div.message > p {
+	color: var(--warning-color);
 }
 
 li.setting .SettingsSelection {
@@ -5270,7 +5316,7 @@ li.setting select {
 
 /* Help definitions (help.css) */
 section#MSLAppHelp > header {
-	border-bottom: 2px solid #f16529;
+	border-bottom: 2px solid var(--warning-color);
 }
 
 section#MSLAppHelp > main {
@@ -5480,7 +5526,7 @@ div#PrivateModeLockScreenPad > div:hover {
 }
 
 div#PrivateModeLockScreenPad > div:active {
-	border-color: #f16529;
+	border-color: var(--warning-color);
 	transition: border-color 0s linear;
 }
 
@@ -5515,7 +5561,7 @@ div.prompt > div > div > header {
 	height: 22px;
 	padding: 12px;
 	background-color: rgb( 240, 240, 240 );
-	border-bottom: 2px solid #f16529;
+	border-bottom: 2px solid var(--warning-color);
 }
 
 div.prompt > div > div > article {
