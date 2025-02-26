@@ -1868,9 +1868,14 @@ div#homeMainMenuBars > div.small > span.new {
 #hmmPhotos:hover > div { background-image: url('../images/apps/altai/mms_photos.png'); }
 
 #hmmGames { background-image: url('../images/apps/games/mms_games_bg.png'); }
+#hmmGames p:before { content: "Games"; }
 #hmmGames:hover { background-image: url('../images/apps/games/mms_games_bg_hl_retro.png'); }
 #hmmGames > div { background-image: url('../images/apps/games/mms_games.png'); }
 #hmmGames:hover > div { background-image: url('../images/apps/games/mms_games.png'); }
+#hmmGames.unavailable:hover p:before { content: "Temporarily Unavailable"; font-size: 18px; vertical-align: middle; }
+#hmmGames.unavailable { cursor: default; opacity: .5; }
+#hmmGames.unavailable > div { background-image: url('../images/apps/games/mms_games.png') !important; }
+#hmmGames.unavailable:hover { background-image: url('../images/apps/games/mms_games_bg.png') !important; padding-left: 0px !important;  }
 
 #hmmBookmarks { background-image: url('../images/apps/bookmarks/mms_bookmarks_bg.png'); }
 #hmmBookmarks p:before { content: "Bookmarks"; }
