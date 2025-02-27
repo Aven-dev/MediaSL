@@ -88,6 +88,11 @@ body > section > footer {
 	left: 0;
 }
 
+body > section#MSLAppYoutube > footer,
+body > section#MSLAppYoutubeChannel > footer {
+	height: 35px;
+}
+
 body > section > footer > div.policies {
 	position: absolute;
 	top: 0;
@@ -1872,8 +1877,8 @@ div#homeMainMenuBars > div.small > span.new {
 #hmmGames:hover { background-image: url('../images/apps/games/mms_games_bg_hl_retro.png'); }
 #hmmGames > div { background-image: url('../images/apps/games/mms_games.png'); }
 #hmmGames:hover > div { background-image: url('../images/apps/games/mms_games.png'); }
-#hmmGames.unavailable:hover p:before { content: "Temporarily Unavailable"; font-size: 18px; vertical-align: middle; }
-#hmmGames.unavailable { cursor: default; opacity: .5; }
+#hmmGames.unavailable:hover p:before { content: "Currently not available"; font-size: 18px; vertical-align: middle; }
+#hmmGames.unavailable { cursor: default; }
 #hmmGames.unavailable > div { background-image: url('../images/apps/games/mms_games.png') !important; }
 #hmmGames.unavailable:hover { background-image: url('../images/apps/games/mms_games_bg.png') !important; padding-left: 0px !important;  }
 
