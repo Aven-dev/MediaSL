@@ -1,0 +1,5 @@
+[[headers]]
+for = "/fonts/*"
+  [headers.values]
+  Access-Control-Allow-Origin = "*"
+  Access-Control-Allow-Methods = "GET, OPTIONS"
