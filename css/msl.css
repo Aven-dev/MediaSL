@@ -1,7 +1,12 @@
 :root {
 	--text-shadow: rgba( 0, 0, 0, 0.5 );
-	--error-color: #f00000;
+	--error-color: #ff1400;
 	--warning-color: #f16529;
+
+	--msl-orange: #ff6624;
+	--msl-blue: #249bff;
+	--msl-green: #0cffac;
+	--msl-pink: #ff1b86;
 }
 
 /* Global settings */
@@ -43,6 +48,18 @@
 @keyframes rotate {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
+}
+
+@keyframes cuteTwist90 {
+	0% { transform: rotate(0deg); }
+	40% { transform: rotate(10deg); }
+	100% { transform: rotate(-90deg); }
+}
+
+@keyframes cuteTwistMinus90 {
+	0% { transform: rotate(-90deg); }
+	40% { transform: rotate(-100deg); }
+	100% { transform: rotate(0deg); }
 }
 
 /* Generic page setup */
@@ -555,7 +572,27 @@ button.inputcodeCancel:hover {
 }
 
 .errorMessage.modal.fullpage {
+	z-index: 100;
+}
+
+.errorMessage.modal.fullpage {
 	background: url('../images/bg-modal.png');
+}
+
+.errorMessage.modal.fullpage.happy {
+	background-image: none;
+	background-color: rgba(39, 40, 51, 0.84);
+}
+
+.errorMessage.modal.happy > header {
+	background-color: rgba(134, 148, 204, 0.8);
+}
+
+.errorMessage.modal.happy h1.warning {
+	background-image: url('../images/qm-home-n.png');
+	font-size: 25px;
+	padding-left: 54px;
+	text-shadow: 1px 1px rgba(0,0,0,0.8);
 }
 
 .errorMessage.modal > main {
@@ -834,7 +871,7 @@ div.fullscreenOverlay > div.qm > div.favorite.on > div { background-image: url('
 div.fullscreenOverlay > div.qm > div.lock.locked > div { background-image: url('../images/qm-unlock.png'); }
 div.fullscreenOverlay > div.qm > div.lock.unlocked > div { background-image: url('../images/qm-lock.png'); }
 div.fullscreenOverlay > div.qm > div.return > div { background-image: url('../images/qm-back.png'); }
-div.fullscreenOverlay > div.qm > div.home > div { background-image: url('../images/qm-home.png'); }
+div.fullscreenOverlay > div.qm > div.home > div { background-image: url('../images/qm-home-n.png'); }
 
 div.fullscreenOverlay > div.qm > div.previous > div > p:before { content: "Previous"; }
 div.fullscreenOverlay > div.qm > div.channel > div > p:before { content: "Channel"; }
@@ -1475,28 +1512,114 @@ div.gridMenuPages > div.selected {
 
 /* Home app definitions (home.css) */
 section#MSLAppHome > header {
-	border-bottom: 2px solid var(--warning-color);
+	padding: 0 18px;
+	margin: 0;
 }
 
-section#MSLAppHome > header > img {
-	width: 200px;
-	height: 34px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	user-drag: none;
-	user-select: none;
+div#homeHeaderMain {
+	width: 100%;
+	height: 20px;
+	display: flex;
+	margin-top: 18px;
 }
 
-section#MSLAppHome > header > time {
-	height: 35px;
-	font-size: 41px;
-	font-weight: 100;
+div#homeHeaderLogo {
+	width: 117px;
+	height: 20px;
+	background-image: url('../images/logo-n.png');
+	background-repeat: no-repeat;
+	margin-right: auto;
+}
+
+div#homeHeaderLogo > strong {
+	font-weight: 800;
+	color: var(--msl-orange);
+}
+
+div#homeHeaderStatusIcons {
+	display: flex;
+	gap: 14px;
+	margin-right: 22px;
+}
+
+div#homeHeaderStatusIcons > div {
+	min-width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+div#homeHeaderStatusIcons > div#compatibilityInfo {
+	cursor: pointer;
+	background-image: url('../images/n-icon-warning.png');
+}
+
+div#homeHeaderStatusIcons > div#compatibilityInfo.bad {
+	background-image: url('../images/n-icon-warning-mega.png');
+	animation: 5s linear infinite attentionWiggle;
+}
+
+div#homeHeaderStatusIcons > div#appLock {
+	background-image: url('../images/n-icon-applock.png');
+	animation-name: scaleblink; 
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+div#homeHeaderStatusIcons > div#ownerLock.lock {
+	background-image: url('../images/n-icon-screen-lock.png');
+	animation: cuteTwistMinus90;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+div#homeHeaderStatusIcons > div#ownerLock.unlock {
+	background-image: url('../images/n-icon-screen-locked.png');
+	animation: cuteTwist90;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+div#homeHeaderStatusIcons > div#privateModeIcon.privateModeEnabled {
+	width: 136px;
+	background-image: url('../images/n-icon-privatemode.png');
+}
+
+div#homeHeaderStatusIcons > div#helpIcon {
+	cursor: pointer;
+	background-image: url('../images/n-icon-help.png');
+}
+
+div#homeHeaderStatusIcons > div#statusSyncIcon.ok {
+	background-image: url('../images/n-icon-sync-ok.png');
+}
+
+div#homeHeaderStatusIcons > div#statusSyncIcon.slow {
+	background-image: url('../images/n-icon-sync-slow.png');
+}
+
+div#homeHeaderStatusIcons > div#statusSyncIcon.disconnected {
+	background-image: url('../images/n-icon-sync-disconnect.png');
+}
+
+div#homeHeaderTime {
+	font-family: "Motiva Sans";
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 22px;
 	color: #fff;
-	line-height: 41px;
-	position: absolute;
-	top: 0;
-	right: 0;
+}
+
+div#homeHeaderSeparator {
+	width: 100%;
+	height: 2px;
+	margin-top: 18px;
+	background-color: #ffffff;
 }
 
 section#MSLAppHome .fullpage {
@@ -1605,37 +1728,33 @@ section#MSLAppHome .fullpage {
 }
 
 main#homeMainMenu {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	height: 460px;
-	padding-top: 22px;
-	margin: 0 30px;
+	margin: 52px 80px 0;
 }
 
 div#homeMainMenuTiles {
-	display: flex;
-	justify-content: flex-end;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: flex-start;
+	display: grid;
+    grid-template-columns: repeat(5, 160px);
+    grid-template-rows: repeat(2, 160px);
+	gap: 16px;
 }
 
 div#homeMainMenuTiles > div {
-	width: 146px;
-	height: 146px;
-	margin: 0 0 14px 14px;
 	background-color: rgba( 0, 0, 0, 0.1 );
-	border-radius: 3px;
+	border-radius: 25px;
 	overflow: hidden;
 	position: relative;
+}
+
+div#homeMainMenuTiles > div.tile2x2 {
+	grid-column: span 2;
+	grid-row: span 2;
 }
 
 div#homeMainMenuTiles > div.clickable {
 	cursor: pointer;
 }
 
-div#homeMainMenuTiles > div > div {
+div#homeMainMenuTiles > div.appHomeIcon > div {
 	position: absolute;
 	top: 0; left: 0;
 	width: 100%;
@@ -1643,45 +1762,53 @@ div#homeMainMenuTiles > div > div {
 	background-repeat: no-repeat;
 }
 
-div#homeMainMenuTiles > div > div.bg {
+div#homeMainMenuTiles > div.appHomeIcon > div.bg {
 	z-index: 1;
 	opacity: 1;
 	transition: .35s opacity ease;
 	background-size: cover;
 }
 
-div#homeMainMenuTiles > div:hover > div.bg {
+div#homeMainMenuTiles > div.appHomeIcon:hover > div.bg {
 	opacity: 0;
 	transition: .1s opacity ease;
 }
 
-div#homeMainMenuTiles > div.blurred > video {
+div#homeMainMenuTiles > div.appHomeIcon:hover > video {
+	visibility: visible;
+	transition: visiblity .35s linear;
+}
+
+div#homeMainMenuTiles > div.appHomeIcon.blurred > video {
 	filter: brightness(20%) blur(12px) !important;
 }
 
-div#homeMainMenuTiles > div.unavailable > video {
+div#homeMainMenuTiles > div.appHomeIcon.unavailable > video {
 	filter: brightness(80%) !important;
 }
 
-div#homeMainMenuTiles > div > div.logo {
+div#homeMainMenuTiles > div.appHomeIcon > div.logo {
 	z-index: 3;
 	background-size: 65% auto;
-	background-position: center 25px;
+	background-position: center 28px;
 	transition: .35s background linear;
 }
 
-div#homeMainMenuTiles > div > video {
+div#homeMainMenuTiles > div.appHomeIcon > video {
 	filter: brightness(90%);
 	border-radius: 3px;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
 }
 
-div#homeMainMenuTiles > div:hover > div.logo {
+div#homeMainMenuTiles > div.appHomeIcon:hover > div.logo {
 	background-size: 50% auto;
 	background-position: center 17px;
 	transition: .1s background linear;
 }
 
-div#homeMainMenuTiles > div > div.text {
+div#homeMainMenuTiles > div.appHomeIcon > div.text {
 	z-index: 3;
 	background-size: 65% auto;
 	background-position: center 135px;
@@ -1689,18 +1816,185 @@ div#homeMainMenuTiles > div > div.text {
 	opacity: 0;
 }
 
-div#homeMainMenuTiles > div:hover > div.text {
+div#homeMainMenuTiles > div.appHomeIcon:hover > div.text {
 	background-position: center 82px;
 	transition: .1s all ease;
 	opacity: 1;
 }
 
-div#homeMainMenuTiles > div.blurred > div.text {
+div#homeMainMenuTiles > div.appHomeIcon.blurred > div.text {
 	background-image: url('../images/apps/adult/access.png') !important;
 }
 
-div#homeMainMenuTiles > div.unavailable > div.text {
+div#homeMainMenuTiles > div.appHomeIcon.unavailable > div.text {
 	background-image: url('../images/apps/unavailable.png') !important;
+}
+
+div#hmmRssWidget {
+	position: relative;
+}
+
+div#hmmRssWidget div.prt-feedback {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 1;
+	display: none;
+}
+
+div#hmmRssWidget div.prt-feedback.loading {
+	display: block;
+}
+
+div#hmmRssWidget div.prt-feedback > div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(100% - 36px);
+	height: calc(100% - 36px);
+	margin: 8px;
+	padding: 8px;
+	border: 2px solid rgba( 200, 200, 200, 0.25 );
+	border-radius: 25px;
+}
+
+div#hmmRssWidget div.prt-feedback p {
+	font-family: "Motiva Sans";
+	font-size: 12px;
+	font-weight: 500;
+	color: #c8c8c8;
+	text-align: center;
+}
+
+div#hmmRssWidget div.prt-feedback .loadingDots {
+	width: 100%;
+	min-height: 18px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #c8c8c8;
+	text-align: center;
+}
+
+div#hmmRssWidget div.prt-scroller {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 2;
+	opacity: 1.0;
+}
+
+div#hmmRssWidget div.prt-scroller.inactive {
+	opacity: 0.0;
+}
+
+div#hmmRssWidget div.prt-scroller > ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0.0;
+	transition: none;
+	position: relative;
+}
+
+div#hmmRssWidget div.prt-scroller > ul.loaded {
+	opacity: 1.0;
+	transition: opacity 0.3s linear;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li {
+	width: 100%;
+	height: 157px;
+	display: block;
+	margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	overflow: hidden; 
+	transition: filter 0.1s linear;
+}
+
+div#hmmRssWidget div.prt-scroller > ul:hover > li:not(:hover) {
+	filter: brightness(0.6);
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li > div {
+	background-color: rgba( 0, 0, 0, 0.5 );
+	padding: 1px 5px 3px;
+	position: absolute;
+	bottom: 0;
+	width: calc( 100% - 10px );
+	backdrop-filter: blur(3px);
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li > div > div {
+	border-top: 1px solid #fff;
+	padding-top: 2px;
+	height: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s linear;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li:hover > div > div {
+	height: auto;
+	max-height: 157px;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li footer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 6px;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li footer > div {
+	margin: 0 4px;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li h6 {
+	font-family: "Motiva Sans";
+	font-size: 17px;
+	font-weight: 300;
+	color: #fff;
+
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li p {
+	font-family: "Motiva Sans";
+	font-size: 14px;
+	font-weight: 300;
+	color: #fff;
+	line-height: 17px;
+
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div#hmmRssWidget div.prt-scroller > ul > li button {
+	height: 15px;
+	line-height: 15px;
+	font-family: "Motiva Sans";
+	font-size: 11px;
+	font-weight: 300;
+	padding: 0 12px;
+	border-radius: 7px;
+	color: #fff;
+	background-color: var(--msl-orange);
+	border: 0;
 }
 
 #hmmWavestream > div { background-image: url('../images/apps/wavestream/wavestream.png'); }
@@ -1716,6 +2010,12 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmTwitch:hover > div.text { background-position: center 92px !important; }
 #hmmTwitch > div.logo { background-image: url('../images/apps/twitch/twitchLogo.png'); }
 #hmmTwitch > div.text { background-image: url('../images/apps/twitch/twitchText.png'); }
+
+#hmmShoutcast > div.bg { background-image: url('../images/apps/shoutcast/shoutcast.png'); }
+#hmmShoutcast:hover > div.logo { background-position: center 22px !important; }
+#hmmShoutcast:hover > div.text { background-position: center 92px !important; }
+#hmmShoutcast > div.logo { background-image: url('../images/apps/shoutcast/shoutcastLogo.png'); }
+#hmmShoutcast > div.text { background-image: url('../images/apps/shoutcast/shoutcastText.png'); }
 
 #hmmKaraoke > div.bg { background-image: url('../images/apps/karaoke/karaoke.png'); }
 #hmmKaraoke:hover > div.logo { background-position: center 22px !important; }
@@ -1755,98 +2055,6 @@ div#homeMainMenuTiles > div.unavailable > div.text {
 #hmmRedTube:hover > div.text { background-position: center 92px !important; }
 #hmmRedTube > div.logo { background-image: url('../images/apps/adult/redtubeLogo.png'); }
 #hmmRedTube > div.text { background-image: url('../images/apps/adult/redtubeText.png'); }
-
-div#homeMainMenuBars {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: stretch;
-	justify-content: space-between;
-	width: 476px;
-	color: #fff;
-}
-
-div#homeMainMenuBars > div {
-	width: 476px;
-	height: 83px;
-	float: left;
-	background-color: rgba( 0, 0, 0, 0.1 );
-	transition: .35s background-image ease-out;
-	transition: .2s padding ease;
-	margin-bottom: 22px;
-	cursor: pointer;
-	border-radius: 3px;
-	user-select: none;
-	position: relative;
-}
-
-div#homeMainMenuBars > div.disabled {
-	cursor: auto !important;
-	opacity: .5;
-}
-
-div#homeMainMenuBars > div:hover {
-	transition: .1s background-image ease-in;
-	padding-left: 8px;
-}
-
-div#homeMainMenuBars > div.disabled:hover {
-	padding-left: 0px !important;
-}
-
-div#homeMainMenuBars > div.small {
-	width: 230px;
-	height: 46px;
-}
-
-div#homeMainMenuBars > div.small:hover {
-	width: 230px;
-	padding-left: 0px;
-}
-
-div#homeMainMenuBars > div.smallMargin {
-	margin-bottom: 18px;
-}
-
-div#homeMainMenuBars > div > div {
-	width: 92px;
-	height: 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	float: left;
-}
-
-div#homeMainMenuBars > div.small > div {
-	width: 51px;
-}
-
-div#homeMainMenuBars > div > p {
-	font-size: 36px;
-	padding-top: 22px;
-}
-
-div#homeMainMenuBars > div.small > p {
-	font-size: 26px;
-	padding-top: 8px;
-}
-
-div#homeMainMenuBars > div > span.new {
-	width: 50px;
-	height: 20px;
-	background: transparent url('../images/apps/new.png') no-repeat;
-	position: absolute;
-	top: calc( 83px / 2 - 10px );
-	right: 25px;
-}
-
-div#homeMainMenuBars > div.small > span.new {
-	width: 14px;
-	height: 14px;
-	border-radius: 28px;
-	background-image: none;
-	background-color: #f00;
-	top: calc( 50px / 2 - 7px );
-}
 
 #hmmSettings:hover > span.new {
 	display: none;
@@ -1900,28 +2108,104 @@ div#homeMainMenuBars > div.small > span.new {
 #hmmSettings.isGuest:hover > p:before { content: "Owner Only"; }
 #hmmSettings.isGuest:hover > div { background-image: none; }
 
+div#homeMainMenuButtons {
+	height: 36px;
+	display: flex;
+	gap: 22px;
+	margin-top: 42px;
+	padding-inline: 15px;
+}
+
+div#homeMainMenuButtons > div {
+	background-color: #191919;
+	border-radius: 18px;
+	flex: 1;
+	height: 100%;
+	font-family: "Motiva Sans";
+	font-size: 22px;
+	font-weight: 500;
+	color: #d7d7d7;
+	text-align: center;
+	text-transform: uppercase;
+	line-height: 36px;
+	position: relative;
+	transition: background-color 0.3s linear;
+}
+
+div#homeMainMenuButtons > div:hover {
+	color: #fff;
+	transition: background-color 0.1s linear;
+}
+
+div#homeMainMenuButtons > div.unavailable {
+	cursor: default;
+	transition: color 0.3s linear;
+}
+
+div#homeMainMenuButtons > div.unavailable:hover {
+	color: var(--error-color);
+	transition: color 0.1s linear;
+}
+
+div#homeMainMenuButtons > div > div.outline {
+	outline: 2px solid #fff;
+	width: calc( 100% + 8px );
+	height: calc( 100% + 8px );
+	position: absolute;
+	top: -4px; left: -4px;
+	border-radius: 24px;
+	opacity: 0;
+	transition: opacity 0.3s linear;
+}
+
+div#homeMainMenuButtons > div.unavailable > div.outline {
+	outline-color: var(--error-color);
+}
+
+div#homeMainMenuButtons > div:hover > div.outline {
+	opacity: 1;
+	transition: opacity 0.1s linear;
+}
+
+div#hmmbBrowser:not(.unavailable):hover { background-color: var(--msl-blue); }
+div#hmmbBrowser:before { content: "Browser"; }
+div#hmmbBrowser.unavailable:hover:before { content: "Owner Locked"; }
+
+div#hmmbBookmarks:not(.unavailable):hover { background-color: var(--msl-green); }
+div#hmmbBookmarks:before { content: "Bookmarks"; }
+div#hmmbBookmarks.unavailable:hover:before { content: "Owner Locked"; }
+
+div#hmmbFiles:not(.unavailable):hover { background-color: var(--msl-pink); }
+div#hmmbFiles:before { content: "Files"; }
+div#hmmbFiles.unavailable:hover:before { content: "Owner Locked"; }
+
+div#hmmbSettings:not(.unavailable):hover { background-color: var(--msl-orange); }
+div#hmmbSettings:before { content: "Settings"; }
+div#hmmbSettings.isGuest { cursor: default; }
+div#hmmbSettings.isGuest:hover:before { content: "Owner Only"; }
+
 /* Games App */
 #MSLAppGames > header {
 	border-bottom: 2px solid var(--warning-color);
 }
 
 #MSLAppGames > header > img {
-	width: 200px;
-	height: 34px;
 	position: absolute;
-	top: 0;
+	top: 7px;
 	left: 0;
 	user-drag: none;
 	user-select: none;
 }
 
 #MSLAppGames > header > time {
-	font-size: 41px;
-	font-weight: 100;
+	font-family: "Motiva Sans";
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 22px;
 	color: #fff;
-	line-height: 41px;
+
 	position: absolute;
-	top: 0;
+	top: 7px;
 	right: 0;
 }
 
@@ -3609,7 +3893,7 @@ div.playall > div.stats > p.small {
 
 
 /* Radio app definitions (radio.css) */
-#MSLAppRadio > header > div.appLogo { background-image: url('../images/logo-wavestream.png'); }
+#MSLAppRadio > header > div.appLogo { background-image: url('../images/apps/shoutcast/shoutcastText.png'); }
 
 #MSLAppRadio > main {
 	height: 488px;
@@ -4943,10 +5227,8 @@ section#MSLAppSettings > header {
 }
 
 section#MSLAppSettings > header > img {
-	width: 200px;
-	height: 34px;
 	position: absolute;
-	top: 0;
+	top: 7px;
 	left: 0;
 	user-drag: none;
 	user-select: none;
@@ -4954,12 +5236,13 @@ section#MSLAppSettings > header > img {
 }
 
 section#MSLAppSettings > header > time {
-	font-size: 41px;
-	font-weight: 100;
+	font-family: "Motiva Sans";
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 22px;
 	color: #fff;
-	line-height: 41px;
 	position: absolute;
-	top: 0;
+	top: 7px;
 	right: 0;
 }
 
@@ -5334,10 +5617,8 @@ section#MSLAppHelp > main {
 }
 
 section#MSLAppHelp > header > img {
-	width: 200px;
-	height: 34px;
 	position: absolute;
-	top: 0;
+	top: 7px;
 	left: 0;
 	user-drag: none;
 	user-select: none;
@@ -5345,12 +5626,13 @@ section#MSLAppHelp > header > img {
 }
 
 section#MSLAppHelp > header > time {
-	font-size: 41px;
-	font-weight: 100;
+	font-family: "Motiva Sans";
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 22px;
 	color: #fff;
-	line-height: 41px;
 	position: absolute;
-	top: 0;
+	top: 7px;
 	right: 0;
 }
 

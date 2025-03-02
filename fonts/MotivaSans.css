@@ -1,0 +1,28 @@
+@font-face {
+	font-family: "Motiva Sans";
+	font-style: normal;
+	font-weight: 300;
+	src: local("Motiva Sans"), url("MotivaSansLight.woff2") format("woff2");
+	font-display: swap;
+}
+@font-face {
+	font-family: "Motiva Sans";
+	font-style: normal;
+	font-weight: 500;
+	src: local("Motiva Sans"), url("MotivaSansMedium.woff2") format("woff2");
+	font-display: swap;
+}
+@font-face {
+	font-family: "Motiva Sans";
+	font-style: normal;
+	font-weight: 700;
+	src: local("Motiva Sans"), url("MotivaSansBold.woff2") format("woff2");
+	font-display: swap;
+}
+@font-face {
+	font-family: "Motiva Sans";
+	font-style: normal;
+	font-weight: 800;
+	src: local("Motiva Sans"), url("MotivaSansExtraBold.woff2") format("woff2");
+	font-display: swap;
+}
