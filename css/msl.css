@@ -1891,6 +1891,31 @@ div#hmmRssWidget div.prt-scroller.inactive {
 	opacity: 0.0;
 }
 
+div#hmmRssWidget div.prt-scroller > header {
+	height: 23px;
+	line-height: 23px;
+	padding-left: 18px;
+	background-color: #eb7818;
+	background-image: url('../images/icon-rss.png');
+	background-repeat: no-repeat;
+	background-position: right 6px center;
+	font-family: "Motiva Sans";
+	font-size: 18px;
+	font-weight: 300;
+	color: #fff;
+	text-transform: uppercase;
+	opacity: 0.0
+}
+
+div#hmmRssWidget div.prt-scroller > header > img {
+	vertical-align: -1px;
+}
+
+div#hmmRssWidget div.prt-scroller.loaded > header {
+	opacity: 1.0;
+	transition: opacity 0.3s linear;
+}
+
 div#hmmRssWidget div.prt-scroller > ul {
 	display: block;
 	margin: 0;
@@ -1899,9 +1924,10 @@ div#hmmRssWidget div.prt-scroller > ul {
 	opacity: 0.0;
 	transition: none;
 	position: relative;
+	z-index: -1;
 }
 
-div#hmmRssWidget div.prt-scroller > ul.loaded {
+div#hmmRssWidget div.prt-scroller.loaded > ul {
 	opacity: 1.0;
 	transition: opacity 0.3s linear;
 }
@@ -1934,7 +1960,6 @@ div#hmmRssWidget div.prt-scroller > ul > li > div {
 }
 
 div#hmmRssWidget div.prt-scroller > ul > li > div > div {
-	border-top: 1px solid #fff;
 	padding-top: 2px;
 	height: 0;
 	max-height: 0;
@@ -1945,6 +1970,7 @@ div#hmmRssWidget div.prt-scroller > ul > li > div > div {
 div#hmmRssWidget div.prt-scroller > ul > li:hover > div > div {
 	height: auto;
 	max-height: 157px;
+	border-top: 1px solid #fff;
 }
 
 div#hmmRssWidget div.prt-scroller > ul > li footer {
