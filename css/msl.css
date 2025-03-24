@@ -3640,6 +3640,17 @@ div.playall > div.stats > p.small {
 	height: 300px;
 }
 
+#MSLAppYoutubeWatch > main > div.fullscreenOverlay,
+#MSLAppTwitchWatch > main > div.fullscreenOverlay {
+	height: 514px;
+	background-color: transparent;
+}
+
+#MSLAppYoutubeWatch > main > div.fullscreenOverlay > div.qm,
+#MSLAppTwitchWatch > main > div.fullscreenOverlay > div.qm {
+	margin-top: 62px;
+}
+
 #youtubePlayerLoading {
 	display: none;
 	position: absolute;
