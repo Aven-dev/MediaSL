@@ -1,0 +1,122 @@
+nav.soqm {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+    margin-left: 32px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 100;
+}
+
+nav.soqm.hidden {
+    filter: opacity(0);
+}
+
+nav.soqm > div {
+    position: relative;
+}
+
+nav.soqm > div > ul {
+    position: relative;
+    margin: 8px 0;
+    padding: 0;
+    list-style: none;
+    z-index: 2;
+}
+
+nav.soqm > div > div.bar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 56px;
+    height: 100%;
+    border-radius: 28px;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 0;
+}
+
+nav.soqm > div > div.eventArea {
+    position: absolute;
+    top: -30px; left: -30px;
+    width: calc( 56px + 60px + 30px );
+    height: calc( 100% + 60px );
+    pointer-events: all;
+    z-index: 1;
+}
+
+nav.soqm > div > ul > li {
+    margin: 2px 0 0 6px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav.soqm > div > ul > li:first-child {
+    margin-top: 0;
+}
+
+nav.soqm > div > ul > li > div {
+    width: 44px;
+    height: 44px;
+    border-radius: 21px;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin-right: 12px;
+    pointer-events: all;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.75));
+}
+
+nav.soqm > div > ul > li > div:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+nav.soqm > div > ul > li > p {
+    margin: 0;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    background: rgba(0,0,0,0.3);
+    width: fit-content;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+}
+
+nav.soqm > div > ul > li:hover > p {
+    opacity: 1;
+}
+
+nav.soqm > div > ul > li.home > div { background-image: url('../images/qm-home-n.png'); }
+nav.soqm > div > ul > li.return > div { background-image: url('../images/qm-back.png'); }
+nav.soqm > div > ul > li.lock.locked > div { background-image: url('../images/qm-lock.png'); }
+nav.soqm > div > ul > li.lock.unlocked > div { background-image: url('../images/qm-unlock.png'); }
+nav.soqm > div > ul > li.favorite > div { background-image: url('../images/qm-favorite-off.png'); }
+nav.soqm > div > ul > li.favorite.on > div { background-image: url('../images/qm-favorite.png'); }
+nav.soqm > div > ul > li.next > div { background-image: url('../images/qm-next.png'); }
+/*nav.soqm > div > ul > li.loop > div { background-image: url('../images/qm-loop.png'); }
+nav.soqm > div > ul > li.loop.on > div { background-image: url('../images/qm-looping.gif'); }*/
+nav.soqm > div > ul > li.channel > div { background-image: url('../images/qm-channel.png'); }
+nav.soqm > div > ul > li.previous > div { background-image: url('../images/qm-previous.png'); }
+
+
+nav.soqm > div > ul > li.loop > div::before {
+    content: "";
+    position: absolute;
+    background-image: url('../images/qm-loop.png');
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 44px;
+    height: 44px;
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+nav.soqm > div > ul > li.loop.on > div::before {
+    animation: rotate 2s linear infinite;
+}

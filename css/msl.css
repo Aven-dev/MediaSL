@@ -15,6 +15,10 @@
 	padding: 0;
 }
 
+.ignore {
+    display: none !important;
+}
+
 
 /* Keyframe definitions */
 @keyframes selectedPulsing {
@@ -556,7 +560,7 @@ button.inputcodeCancel:hover {
 
 .errorMessage > header {
 	width: 600px;
-	padding: 10px;
+	padding: 10px 16px;
 	background-color: rgba( 0, 0, 0, .8 );
 	border-radius: 3px 5px 0 0;
 	color: #fff;
@@ -565,7 +569,7 @@ button.inputcodeCancel:hover {
 
 .errorMessage > main {
 	width: 600px;
-	padding: 10px;
+	padding: 10px 16px;
 	background-color: rgba( 255, 255, 255, .8 );
 	border-radius: 0 0 5px 5px;
 	margin: 0 auto;
@@ -601,7 +605,7 @@ button.inputcodeCancel:hover {
 
 .errorMessage.modal > footer {
 	width: 600px;
-	padding: 10px;
+	padding: 10px 16px;
 	background-color: rgba( 200, 200, 200, .8 );
 	border-radius: 0 0 5px 5px;
 	margin: 0 auto;
@@ -609,6 +613,16 @@ button.inputcodeCancel:hover {
 
 .errorMessage.modal > footer > button {
 	float: right;
+}
+
+.errorMessage.modal > main picture {
+	display: block;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.errorMessage.modal > main p:last-child {
+	margin-bottom: 0;
 }
 
 h1.warning {
@@ -3743,11 +3757,14 @@ div.playall > div.stats > p.small {
 	text-align: center;
 }
 
-#MSLAppYoutubeWatch > main > .preventPlayerHoverPopups {
-	top: 138px;
-	left: 262px;
-	width: 500px;
-	height: 300px;
+#MSLAppYoutubeWatch > main > div.interactLock {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 99;
+	width: 1024px;
+	height: 576px;
+	overflow: hidden;
+	display: none;
 }
 
 #youtubePlayerLoading {
