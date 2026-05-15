@@ -3814,7 +3814,7 @@ div.playall > div.stats > p.small {
 	display: flex;
 	align-content: center;
 	justify-content: center;
-	margin: 60px;
+	margin: 60px 60px 60px 120px;
 }
 
 #youtubePlayerWarning > div > div > p {
