@@ -1951,7 +1951,7 @@ div#homeMainMenuTiles > div.appHomeIcon.blurred > div.text {
 }
 
 div#homeMainMenuTiles > div.appHomeIcon.unavailable > div.text {
-	background-image: url('../images/apps/unavailable.png') !important;
+	background-image: url('../images/apps/maintenance.png') !important;
 }
 
 div#hmmRssWidget {
